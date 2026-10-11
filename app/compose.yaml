@@ -1,0 +1,37 @@
+# Homebox, as the Synology package runs it: the compose project in the homebox
+# shared folder. The setup container writes .env beside this. The database
+# (SQLite) and every photo, receipt and manual live in the homebox_data
+# volume; backups go to the share.
+services:
+  server:
+    image: ${HB_IMAGE:-ghcr.io/sysadminsmedia/homebox:0.26.2}
+    container_name: homebox-server
+    restart: unless-stopped
+    ports:
+      # HB_BIND is "127.0.0.1:" only while the first account is made, so nobody else can sign up first.
+      - "${HB_BIND:-}${HTTP_PORT:-7745}:7745"
+    volumes:
+      - data:/data
+    environment:
+      TZ: ${TZ:-UTC}
+      HBOX_MODE: production
+      # Signs API keys; made at the first start. Changing it voids every API key.
+      HBOX_AUTH_API_KEY_PEPPER: ${HB_PEPPER}
+      # Sign-ups, set in the window (off unless you open them).
+      HBOX_OPTIONS_ALLOW_REGISTRATION: ${HB_REGISTER:-false}
+      # The address in links and QR labels.
+      HBOX_OPTIONS_HOSTNAME: ${APP_URL}
+      # Behind DSM's reverse proxy: trust its X-Forwarded headers.
+      HBOX_OPTIONS_TRUST_PROXY: ${HB_TRUST_PROXY:-false}
+      # The package looks for updates itself (the window's Updates tab).
+      HBOX_OPTIONS_GITHUB_RELEASE_CHECK: "false"
+      HBOX_OPTIONS_ALLOW_ANALYTICS: "false"
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "-O", "/dev/null", "http://127.0.0.1:7745/api/v1/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+volumes:
+  data:

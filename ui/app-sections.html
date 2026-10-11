@@ -1,0 +1,23 @@
+    <section data-page="inventory" hidden>
+      <div class="note">What's in <a class="hb-link" href="#" target="_blank" rel="noopener">Homebox</a>, across every collection (Homebox's word for a household's inventory). You add and find things in Homebox itself, on a phone too; this is the overview.</div>
+      <div class="tiles" id="in-tiles"></div>
+      <div class="card"><h2>Collections</h2><table><thead><tr><th>Collection</th><th class="n">Items</th><th class="n">Locations</th><th class="n">Worth</th><th class="n">Under warranty</th><th class="n">Files</th><th class="n">People</th></tr></thead><tbody id="in-cols"></tbody></table>
+        <div class="in"><p class="muted small">Worth is what you paid — price times quantity, as Homebox counts it — for everything not archived. Files are the photos, receipts and manuals attached to items.</p></div></div>
+      <div class="card"><h2>Warranties ending soon<span class="right muted small" id="in-window"></span></h2><table><thead><tr><th>Item</th><th>Where</th><th>Ends</th><th class="n"></th></tr></thead><tbody id="in-ending"></tbody></table></div>
+      <div class="card"><h2>Before a warranty ends</h2><div class="in">
+        <p class="muted small">DSM tells its administrators once for each item — the bell in DSM, and on your phone with the DS finder app or DSM's email and push notifications — so there's time to claim a repair or a replacement while it's covered. Give items a warranty end date in Homebox (an item → Edit → Warranty).</p>
+        <label class="f"><span>Tell DSM</span><select id="wa-days"><option value="7">a week before</option><option value="14">2 weeks before</option><option value="30">a month before</option><option value="60">2 months before</option><option value="90">3 months before</option><option value="0">Never</option></select></label>
+        <button class="btn" id="wa-save" data-app>Save</button></div></div>
+    </section>
+
+    <section data-page="users" hidden>
+      <div class="note">The people with an account in <a class="hb-link" href="#" target="_blank" rel="noopener">Homebox</a>. Everyone belongs to one or more collections. A collection's owner brings others in from Homebox — <b>Collection → Invites</b> makes a link — and that works with sign-ups closed.</div>
+      <div class="note warn" id="us-pending" hidden>Your account hasn't been made yet: Homebox answers only on this Synology until it is. The setup log says why it's waiting.</div>
+      <div class="tiles" id="us-tiles"></div>
+      <div class="card"><table><thead><tr><th>Person</th><th>Collections</th><th>Signed in</th><th>Joined</th><th class="n"></th></tr></thead><tbody id="us-list"></tbody></table></div>
+      <div class="card"><h2>Sign-ups</h2><div class="in">
+        <p class="muted small">Closed: only people invited to a collection can make an account. Open: anyone who can reach Homebox can make one, with a collection of their own — fine for a moment while the family joins, then close them again.</p>
+        <p><span id="su-state"></span> <span id="su-btn"></span></p></div></div>
+      <div class="card"><h2>A forgotten password</h2><div class="in">
+        <p class="muted small"><b>New password</b> beside someone makes one, shown here once, through Homebox's own password reset: they're signed out on every device and sign in with the new password, then can change it in Homebox (<b>Profile</b>). Homebox never shows anyone's current password, and the package doesn't keep any.</p></div></div>
+    </section>

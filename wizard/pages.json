@@ -1,0 +1,11 @@
+, {
+    "step_title": "Homebox",
+    "items": [{
+        "type": "textfield",
+        "desc": "Your Homebox account is made at the first start, with a strong password shown once in the Homebox window in DSM. Sign-ups are then closed: the people you live with join through an invitation to your collection (Homebox → Collection → Invites), or you open sign-ups for a moment in the window.",
+        "subitems": [
+            { "key": "wizard_owner_email", "desc": "Your email (sign-in)", "defaultValue": "", "validator": { "allowBlank": false, "regex": { "expr": "/^[A-Za-z0-9._+-]+@[A-Za-z0-9.-]+\\\\.[A-Za-z]{2,}\$/", "errorText": "Looks like you@example.com" } } },
+            { "key": "wizard_owner_name", "desc": "Your name", "defaultValue": "", "validator": { "allowBlank": false, "regex": { "expr": "/^[A-Za-z0-9 ._@-]{1,60}\$/", "errorText": "Letters, digits and spaces — up to 60" } } }
+        ]
+    }]
+}
